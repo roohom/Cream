@@ -1,9 +1,21 @@
-cmake_minimum_required(VERSION 3.12)
 project(MyClion C)
 
 set(CMAKE_C_STANDARD 99)
 SET(CMAKE_BUILE_TYPE DEBUG)
 SET(CMAKE_C_FLAGS_DEBUG "-g -Wall")
+
+
+#加在add_executable(...)之前就好了
+include_directories(
+        # kernel headers
+        "./include/"
+)
+cmake_minimum_required(VERSION 3.6)   # CMake version check
+#project(simple_example)               # Create project "simple_example"
+#set(CMAKE_CXX_STANDARD 11)            # Enable c++11 standard
+
+#set(SOURCE_FILES main.cpp)            # Add main.cpp file of project root directory as source file
+#add_executable(simple_example ${SOURCE_FILES})       # Add executable target with source files listed in SOURCE_FILES variable
 
 add_executable(cosine Circle/cos.c)
 add_executable(print main.c)
@@ -44,3 +56,13 @@ add_executable(func03 Function/func03.c)
 add_executable(func04 Function/func04.c)
 add_executable(func05 Function/func05.c)
 add_executable(func06 Function/func06.c)
+add_executable(func07 Function/func07.c)
+add_executable(func08 Function/func08.c)
+add_executable(func09 Function/func09.c)
+add_executable(func10 Function/func10.c)
+add_executable(func11 Function/func11.c)
+
+
+
+
+
