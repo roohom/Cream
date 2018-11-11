@@ -15,5 +15,5 @@ cmake_minimum_required(VERSION 3.6)
 add_executable(struct01 struct01.c)
 add_executable(struct02 struct02.c)
 add_executable(struct03 struct03.c)
-
-
+add_executable(struct04 struct04.c)
+add_executable(struct05 timeUpdate.c)
