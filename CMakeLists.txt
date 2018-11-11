@@ -63,7 +63,8 @@ add_executable(func10 Function/func10.c)
 add_executable(func11 Function/func11.c)
 add_executable(func12 Function/func12.c)
 add_executable(func13 Function/func13.c)
-
+add_executable(func14 Function/func14.c)
+add_executable(func15 Function/func15.c)
 
 
 
