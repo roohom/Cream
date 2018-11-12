@@ -16,48 +16,43 @@ struct date
     int day;
     int year;
 };
-
+struct date start,end;
 int f(struct date d);
 int g(struct date d);
-long int count(int s);
+int count(int s, struct date d);
+
 
 int main(void)
 {
-    struct date start,end;
     int m,n,r;
+    /*
+    printf("Plz enter the start day:\n");
+    scanf("%i%i%i",&start.month, &start.day, &start.year);
+    printf("Plz enter the  end  day:\n");
+    scanf("%i%i%i",&end.month, &end.day, &end.year);
+     */
+    start = (struct date){8,8,2004};                      //起始日期
+    end = (struct date){2,23,2005};                       //截至日期
 
-    start = (struct date){8, 8, 2004};
-    end = (struct date){2, 22, 2005};
     f(start);
     g(start);
-    m = count(r=0);
-    printf("%d\n", m);
+    m = count(r=0, start);
 
     f(end);
     g(end);
-    n = count(r=1);
-    printf("%d\n",n);
+    n = count(r=1,end);
     printf("Days from %i/%i/%i to %i/%i/%i is %i .",start.month,start.day,start.year, end.month,end.day,end.year,(n-m));
 
 }
 
-long int count(int s)
+int count(int s, struct date d)
 {
-    long int l;
     if(s==0){
-        l = 1461 * (int)f / 4 + (153 * (int)g) / 5 + 3;
-        printf("这是N1的值：");
-        printf("%i\n",l);
-        return l;
+        return (1461 * f(d) / 4 + (153 * g(d)) / 5 + 3);
     }
     else if(s==1){
-        l= 1461 * (int)f / 4 + (153 * (int)g) / 5 + 21;
-        printf("这是N2的值：");
-        printf("%i\n",l);
-        return l;
+        return (1461 * f(d) / 4 + (153 * g(d)) / 5 + 21);
     }
-
-
 }
 
 int f(struct date d)
@@ -73,6 +68,7 @@ int g(struct date d)
     if(d.month<=2)
         return d.month+13;
     else
+
         return d.month+1;
 }
 
