@@ -8,7 +8,8 @@
 // g(month) = month + 13     若month<=2
 //            month + 1      否则
 
-
+// 经过测试，所输入的起始日期和截止日期的年份如果相同，最后的结果将返回18
+// 要使计算得当，所输入的起始和截至日期都不能在同一年，比如8/8/2018和8/22/2018
 #include <stdio.h>
 struct date
 {
@@ -32,7 +33,7 @@ int main(void)
     scanf("%i%i%i",&end.month, &end.day, &end.year);
      */
     start = (struct date){8,8,2004};                      //起始日期
-    end = (struct date){2,23,2005};                       //截至日期
+    end = (struct date){8,22,2004};                       //截至日期
 
     f(start);
     g(start);
