@@ -16,5 +16,7 @@ add_executable(pointer09 pointer09.c)
 add_executable(pointer10 pointer10.c)
 add_executable(pointer11 pointer11.c)
 add_executable(pointer12 pointer12.c)
+add_executable(pointer13 pointer13.c)
+add_executable(pointer14 pointer14.c)
 
 
