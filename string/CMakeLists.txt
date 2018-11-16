@@ -15,6 +15,7 @@ add_executable(str07 str07.c)
 add_executable(str08 str08.c)
 add_executable(str09 str09.c)
 add_executable(str10 str10.c)
+add_executable(str11 str11.c)
 
 
 
