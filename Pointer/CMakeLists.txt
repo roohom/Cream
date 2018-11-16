@@ -10,6 +10,11 @@ add_executable(pointer03 pointer03.c)
 add_executable(pointer04 pointer04.c)
 add_executable(pointer05 pointer05.c)
 add_executable(pointer06 pointer06.c)
-
+add_executable(pointer07 pointer07.c)
+add_executable(pointer08 pointer08.c)
+add_executable(pointer09 pointer09.c)
+add_executable(pointer10 pointer10.c)
+add_executable(pointer11 pointer11.c)
+add_executable(pointer12 pointer12.c)
 
 
