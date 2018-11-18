@@ -19,4 +19,4 @@ add_executable(pointer12 pointer12.c)
 add_executable(pointer13 pointer13.c)
 add_executable(pointer14 pointer14.c)
 add_executable(pointer15 pointer15.c)
-
+add_executable(pointer16 pointer16.c)
