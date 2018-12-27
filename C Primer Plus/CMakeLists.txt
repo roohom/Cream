@@ -28,6 +28,12 @@ add_executable(ch3.2 CH3/ch3.2.c)
 add_executable(ch3.3 CH3/ch3.3.c)
 add_executable(ch3.4 CH3/ch3.4.c)
 add_executable(ch3.5 CH3/ch3.5.c)
+add_executable(ch3.6 CH3/ch3.6.c)
+
+
+
+
+
 
 
 
