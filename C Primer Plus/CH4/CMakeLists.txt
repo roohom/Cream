@@ -22,4 +22,4 @@ add_executable(ch4.1 ch4.1.c)
 add_executable(ch4.2 ch4.2.c)
 add_executable(ch4.3 ch4.3.c)
 add_executable(ch4.4 ch4.4.c)
-
+add_executable(ch4.6 ch4.6.c)
