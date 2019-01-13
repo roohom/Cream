@@ -28,20 +28,6 @@ int dispList(LNode *L)            //输出链表
     while(i == nullptr);
     printf("\n");
 }
-----------------------------------
- 这种方式同样不行
- int dispList(SLNode *L)            //输出链表
-{
-    SLNode *i;
-    i = L->next;
-    if (i== nullptr) return 0;
-    while(i)
-    {
-        printf("%d ", i->data);
-        i = i->next;
-    }
-    printf("\n");
-}
 用这种输出方式为什么不行？只打印出一串内存地址？？？*/
 
 //输出链表的元素(根据上面版本的改进版)
@@ -50,11 +36,11 @@ int dispList(SLNode *L)            //输出链表
     SLNode *i;
     i = L->next;
     if (i== nullptr) return 0;
-    while(i)
+    do
     {
         printf("%d ", i->data);
         i = i->next;
-    }
+    }while(i != nullptr);
     printf("\n");
 }
 
