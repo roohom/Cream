@@ -7,18 +7,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*å…³äºæŒ‡é’ˆä½•å¼•ç”¨çš„åŒºåˆ«*/
+/*¹ØÓÚÖ¸ÕëºÎÒıÓÃµÄÇø±ğ*/
 
-void swap1(int &a, int &b)     // ä½¿ç”¨å¼•ç”¨ç±»å‹
+void swap1(int *a, int *b)     // Ê¹ÓÃÖ¸ÕëÀàĞÍ
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+
+}
+
+void swap2(int &a, int &b)     //Ê¹ÓÃÒıÓÃÀàĞÍ
 {
     int temp;
     temp = a;
     a = b;
     b = temp;
-
 }
 
-void swap2(int a, int b)        //ä¸ä½¿ç”¨å¼•ç”¨ç±»å‹
+void swap3(int a, int b)        //²»Ê¹ÓÃÒıÓÃÀàĞÍ
 {
     int temp;
     temp = a;
@@ -29,17 +37,21 @@ void swap2(int a, int b)        //ä¸ä½¿ç”¨å¼•ç”¨ç±»å‹
 
 int main(){
 
-    int x,y,a,b;
-    scanf("%d%d%d%d", &x, &y, &a, &b);
-    swap1(x, y);             // å¼•ç”¨ç±»å‹æ”¹å˜aï¼Œbçš„å€¼
-    printf("  ä½¿ç”¨åº”ç”¨ç±»å‹è°ƒç”¨swapå‡½æ•°ä¹‹åa,bçš„å€¼ï¼š");
+    int x=1,y=2;
+    int a=1,b=2;
+    int c=1,d=2;
+    swap1(&x, &y);             // Ö¸ÕëÀàĞÍ¸Ä±äa£¬bµÄÖµ
+    printf("  Ê¹ÓÃÖ¸ÕëÀàĞÍµ÷ÓÃswapº¯ÊıÖ®ºóa,bµÄÖµ£º");
     printf("%d-----%d\n",x,y);
-    swap2(a, b);               //ä¸ä½¿ç”¨å¼•ç”¨ç±»å‹æ¥æ”¹å˜aï¼Œbçš„å€¼
-    printf("ä¸ä½¿ç”¨å¼•ç”¨ç±»å‹è°ƒç”¨swapå‡½æ•°ä¹‹åaï¼Œbçš„å€¼ï¼š");
-    printf("%d-----%d\n",a,b);
+    swap2(a, b);               // ÒıÓÃÀàĞÍ¸Ä±äa£¬bµÄÖµ
+    printf("  Ê¹ÓÃÒıÓÃÀàĞÍµ÷ÓÃswapº¯ÊıÖ®ºóa,bµÄÖµ£º");
+    printf("%d-----%d\n",x,y);
+    swap3(a, b);               //²»Ê¹ÓÃÒıÓÃÀàĞÍÀ´¸Ä±äabµÄÖµ
+    printf("²»Ê¹ÓÃÒıÓÃÀàĞÍµ÷ÓÃswapº¯ÊıÖ®ºóa£¬bµÄÖµ£º");
+    printf("%d-----%d\n",c,d);
 }
 
-// å†™å®Œäº†ç¼–è¯‘å‡ºé”™æŸ¥é˜…èµ„æ–™æ‰çŸ¥é“Cè¯­è¨€ä¸­æ²¡æœ‰å¼•ç”¨,C++ä¸­æ‰æœ‰å¼•ç”¨  æ‰‹åŠ¨ç‹—å¤´
-/*Clionç¼–è¯‘è¿è¡Œå‡ºç°è«åé”™è¯¯ï¼š*/
+// Ğ´ÍêÁË±àÒë³ö´í²éÔÄ×ÊÁÏ²ÅÖªµÀCÓïÑÔÖĞÃ»ÓĞÒıÓÃ,C++ÖĞ²ÅÓĞÒıÓÃ  ÊÖ¶¯¹·Í·
+/*Clion±àÒëÔËĞĞ³öÏÖÄªÃû´íÎó£º*/
 //D:\Clion Projects\Cream\Point_learn\case01.c:9:16: error: expected ';', ',' or ')' before '&' token
-// void swap1(int &a, int &b)     // æµ£è·¨æ•¤å¯®æ› æ•¤ç»«è¯²ç€·
+// void swap1(int &a, int &b)     // ä½¿ç”¨å¼•ç”¨ç±»å‹
