@@ -11,7 +11,7 @@
 typedef struct LNode{
     int data;
     struct LNode *next;
-}LNode, *List;
+}SLNode, *List;
 
 /*用这种输出方式为什么不行？只打印出一串内存地址？？？
 //输出链表的元素
@@ -28,12 +28,41 @@ int dispList(LNode *L)            //输出链表
     while(i == nullptr);
     printf("\n");
 }
+----------------------------------
+ 这种方式同样不行
+ int dispList(SLNode *L)            //输出链表
+{
+    SLNode *i;
+    i = L->next;
+    if (i== nullptr) return 0;
+    while(i)
+    {
+        printf("%d ", i->data);
+        i = i->next;
+    }
+    printf("\n");
+}
 用这种输出方式为什么不行？只打印出一串内存地址？？？*/
+
+//输出链表的元素(根据上面版本的改进版)
+int dispList(SLNode *L)            //输出链表
+{
+    SLNode *i;
+    i = L->next;
+    if (i== nullptr) return 0;
+    while(i)
+    {
+        printf("%d ", i->data);
+        i = i->next;
+    }
+    printf("\n");
+}
+
 
 int DisplayList(List l)
 {
     List p = nullptr;
-    p = l->next;
+    p = l->next;                     //初始化为初始节点
     int k = 0;
     while (p)
     {
@@ -44,14 +73,14 @@ int DisplayList(List l)
     if (k == 0)
     {
         printf("链表为空");
-        return false;
+        return 0;
     }
     printf("\n");
     return 1;
 }
 
 //尾插法建立链表C
-void tailCreatList(LNode *&C, int a[], int n){
+void tailCreatList(SLNode *&C, int a[], int n){
     LNode *s,*r;                          //s用来指向新申请的节点，始终指向终端节点
     int i;
     C = (LNode *)malloc(sizeof(LNode));   //申请内存空间建立链表C
@@ -69,7 +98,7 @@ void tailCreatList(LNode *&C, int a[], int n){
 }
 
 //头插法建立链表C
-void headCreatList(LNode *&C, int a[], int n)
+void headCreatList(SLNode *&C, int a[], int n)
 {
     LNode *s;                               //s用来指向新申请的节点
     int i;
@@ -87,7 +116,7 @@ void headCreatList(LNode *&C, int a[], int n)
 }
 
 //查找链表C（带头节点）是否存在一个值为x的节点，若是则删除该节点，并返回1，否则返回0
-int findAndDelElem(LNode *C, int x)
+int findAndDelElem(SLNode *C, int x)
 {
     LNode *p,*q;
     p = C;
@@ -114,8 +143,8 @@ int findAndDelElem(LNode *C, int x)
 }
 
 int main() {
-    LNode *C;
-    LNode *L;
+    SLNode *C;
+    SLNode *L;
     printf("下面开始调用上面的函数\n");
     int a[7] = {1, 2, 3, 4, 5, 6, 7};
     int b[7] = {1, 2, 3, 4, 5, 6, 7};
@@ -123,6 +152,7 @@ int main() {
     headCreatList(C, a, 7);
     printf("现在打印链表C：\n");
     DisplayList(C);
+    dispList(C);
     printf("(2)使用尾插法建立链表L：\n");
     tailCreatList(L, b, 7);
     printf("现在打印链表L：\n");
