@@ -25,3 +25,5 @@ add_executable(case04 case04.cpp)
 add_executable(case05 case05.cpp)
 add_executable(case06 case06.cpp)
 add_executable(case07 case07.cpp)
+add_executable(case08 case08.cpp)
+
