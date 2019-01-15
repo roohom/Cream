@@ -31,7 +31,7 @@ int main(){
     for (int j:a) {
         printf("%d ", j);
     }
-    insElem(a,9,5);
+    insElem(a,8,8);
     printf("\n");
     printf("此时的数组a为:\n");
     for (int i:a) {
