@@ -26,7 +26,7 @@ void initStack(LNode *&lst)
 int isEmptyStack(LNode *lst)
 {
     if(lst->next== nullptr) {
-        printf("是空栈\n");
+        printf("栈是空栈\n");
         return 1;
     }else {
         printf("不是空栈\n");
@@ -44,6 +44,7 @@ void inStack(LNode *lst, int x)
     p->data = x;
     p->next = lst->next;
     lst->next = p;
+    printf("现在入栈的元素是:%d\n",x);
 }
 
 
@@ -68,14 +69,18 @@ int main(){
     int x = 1;
     initStack(L);
     isEmptyStack(L);
-    printf("现在进行入栈操作:");
+    printf("现在进行入栈操作:\n");
     inStack(L,1);
     inStack(L,2);
     inStack(L,3);
     inStack(L,4);
+    inStack(L,5);
     isEmptyStack(L);
     outStack(L,x);
     outStack(L,x);
     outStack(L,x);
+    outStack(L,x);
+    outStack(L,x);
+    isEmptyStack(L);
     printf("操作完毕！");
 }

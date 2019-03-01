@@ -3,7 +3,7 @@
 // Created by roohom on 2019/2/23.
 // 2019/2/23 20:07
 
-//顺序队的基本操作
+//顺序栈的基本操作
 
 
 #include <stdio.h>
@@ -48,6 +48,7 @@ int inStack(SqStack &st, int x)
         return 0;
     ++(st.top);
     st.data[st.top]=x;
+    printf("现在入栈的元素是:%d\n",x);
     return 1;
 }
 
@@ -58,13 +59,18 @@ int outStack(SqStack &st,int m)
         return 0;
     m = st.data[st.top];
     --st.top;
-    printf("出栈的元素为:%d\n",m);
+    printf("现在出栈的元素为:%d\n",m);
     return 1;
 }
 
 int main(){
     SqStack L;
     initStack(L);
+    printf("初始化完成，现在检查栈是否为空,结果是:\n");
+    if(isEmptyStack(L)==0)
+        printf("否\n");
+    else
+        printf("是\n");
     printf("将元素1，2，3，4，5入栈:\n");
     inStack(L,1);
     inStack(L,2);
@@ -77,6 +83,8 @@ int main(){
     else
         printf("是\n");
     printf("现在进行出栈操作:\n");
+    outStack(L,0);
+    outStack(L,0);
     outStack(L,0);
     outStack(L,0);
     outStack(L,0);
