@@ -192,3 +192,20 @@ int main(){
     displayStr(str);
     
 }
+
+/*
+为str串赋值:
+ABCACBCAB
+为s1串赋值:
+DEFDFEFED
+为s2串赋值:
+OOOOOOOOO
+
+连接串s1和s2:
+DEFDFEFEDOOOOOOOOO
+求str串的子串:
+CB
+串的比较，比较串s1和s2:
+-1
+现在清空串str:
+ */
