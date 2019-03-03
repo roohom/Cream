@@ -121,3 +121,13 @@ int main()
     getnext(substr,next);
     printf("所要在主串中查找模式串的索引位置是:%d\n",KMP(str,substr,next));
 }
+
+
+/*
+构建主串和模式串
+输出两个串的内容:
+ABABCABCACBAB
+  ABCA
+执行KMP匹配过程
+所要在主串中查找模式串的索引位置是:3
+*/
