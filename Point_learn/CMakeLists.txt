@@ -33,8 +33,8 @@ add_executable(case12 case12.cpp)
 add_executable(case13 case13.cpp)
 add_executable(case14 case14.cpp)
 add_executable(case15 case15.cpp)
-
-
+add_executable(case16 case16.cpp)
+add_executable(case17 case17.cpp)
 
 
 
