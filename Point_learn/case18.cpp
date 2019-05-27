@@ -80,9 +80,38 @@ void postorder(BTNode *p)
 }
 
 
+//计算树的深度
+int getDepth(BTNode *p)
+{
+    int LD,RD;
+    if(p== nullptr)
+    {
+        return 0;
+    }
+    else
+    {
+        LD = getDepth(p->lchild);
+        RD = getDepth(p->rchild);
+        return (LD>RD?LD:RD)+1;
+    }
+}
+
+//统计树的节点数目
+int i=0;
+int getNode(BTnode p)
+{
+    if(p!= nullptr)
+    {
+        i++;
+        getNode(p->rchild);
+        getNode(p->lchild);
+    }
+    return i;
+}
 
 int main()
 {
+    int i =0;
     printf("Let`s begin!\n");
     BTnode root;
     createBinaryTree(root);
@@ -100,6 +129,11 @@ int main()
     printf("后序遍历访问二叉树的每个节点：\n");
     postorder(root);
     cout<<endl;
+
+    printf("下面计算树的深度:\n");
+    printf("树的深度是：%d\n",getDepth(root));
+
+    printf("统计树的节点数目为:%d\n",getNode(root));
 
     printf("访问完毕！");
 
