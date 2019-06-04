@@ -9,6 +9,7 @@
 #include <malloc.h>
 #include <iostream>
 using namespace std;
+#define maxsize 15
 
 typedef struct BTNode
 {
@@ -109,6 +110,86 @@ int getNode(BTnode p)
     return i;
 }
 
+//先序输出序列中第k个节点的值(k<=节点数)
+int n = 0;
+void trave(BTnode p, int k)
+{
+    if(p!= nullptr)
+    {
+        ++n;
+        if(k==n)
+        {
+            cout<<p->data<<endl;
+            return;
+        }
+        trave(p->lchild, k);
+        trave(p->rchild, k);
+    }
+}
+
+//改成中序或者后续遍历
+void trave1(BTnode p, int k)
+{
+    if(p!= nullptr)
+    {
+        trave(p->lchild, k);
+        ++n;
+        if(k==n)
+        {
+            cout<<p->data<<endl;
+            return;
+        }
+
+        trave(p->rchild, k);
+    }
+}
+
+void trave2(BTnode p, int k)
+{
+    if(p!= nullptr)
+    {
+        trave(p->lchild, k);
+        trave(p->rchild, k);
+        ++n;
+        if(k==n)
+        {
+            cout<<p->data<<endl;
+            return;
+        }
+        }
+}
+
+//二叉树的层次遍历
+
+void level(BTnode p)
+{
+    int front,rear;
+    BTnode que[maxsize];
+    front = rear =0;
+    BTnode q;
+    if(p!= nullptr)
+    {
+        rear = (rear+1)%maxsize;
+        que[rear] = p;
+        while(front!=rear)
+        {
+            front = (front+1)%maxsize;
+            q = que[front];
+            Visit(q);
+            if(q->lchild!= nullptr)
+            {
+                rear = (rear+1)%maxsize;
+                que[rear]=q->lchild;
+            }
+            if(q->rchild!=nullptr)
+            {
+                rear = (rear+1)%maxsize;
+                que[rear] = q->rchild;
+            }
+        }
+    }
+}
+
 int main()
 {
     int i =0;
@@ -134,6 +215,15 @@ int main()
     printf("树的深度是：%d\n",getDepth(root));
 
     printf("统计树的节点数目为:%d\n",getNode(root));
+
+    printf("请输入你想要的第k个节点:");
+    int k;
+    cin>>k;
+    printf("这是采用先序遍历得到的结果:" );
+    trave(root,k);
+
+    printf("下面使用层次遍历打印二叉树的各个节点:");
+    level(root);
 
     printf("访问完毕！");
 
