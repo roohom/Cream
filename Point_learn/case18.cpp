@@ -190,6 +190,7 @@ void level(BTnode p)
     }
 }
 
+
 int main()
 {
     int i =0;
@@ -222,7 +223,7 @@ int main()
     printf("这是采用先序遍历得到的结果:" );
     trave(root,k);
 
-    printf("下面使用层次遍历打印二叉树的各个节点:");
+    printf("下面使用层次遍历打印二叉树的各个节点:\n");
     level(root);
 
     printf("访问完毕！");
