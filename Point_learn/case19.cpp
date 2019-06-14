@@ -3,6 +3,11 @@
 // Created by roohom on 2019/6/14.
 // 2019/6/14 22:27
 
+
+//问题描述:
+// -假设一个二叉树采用二叉链表结构存储，设计一个算法，求出二叉树的宽度（觉有最多节点数的那一层上的节点个数）
+
+
 #include <stdio.h>
 #include <malloc.h>
 #include <iostream>
@@ -22,7 +27,7 @@ typedef struct BTNode
 
 typedef struct
 {
-    BTNode *p;
+    BTNode *p;                            //结点指针
     int lno;
 }St;
 
@@ -75,29 +80,29 @@ int maxNode(BTNode *b){
     St que[maxsize];
     int front, rear;
     int  Lno,i, j, n, max;
-    front = rear = 0;
+    front = rear = 0;                    //队列置空
     BTNode *q;
     if(b!= nullptr)
     {
         ++rear;
-        que[rear].p = b;
+        que[rear].p = b;                 //树根入队
         que[rear].lno = 1;
         while(front != rear)
         {
             ++front;
-            q = que[front].p;
+            q = que[front].p;            //关键语句：Lno用来存取当前结点的层次号
             Lno = que[front].lno;
             if(q->lchild!=nullptr)
             {
                 ++rear;
                 que[rear].p = q->lchild;
-                que[rear].lno = Lno +1;
+                que[rear].lno = Lno +1;  //关键语句：根据当前节点的层次号推知其孩子结点的层次号
             }
             if(q->rchild!= nullptr)
             {
                 ++rear;
                 que[rear].p = q->rchild;
-                que[rear].lno = Lno+1;
+                que[rear].lno = Lno+1;   //关键语句：根据当前节点的层次号推知其孩子结点的层次号
             }
         }
 
