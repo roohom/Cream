@@ -17,7 +17,7 @@ cmake_minimum_required(VERSION 3.6)   # CMake version check
 #set(SOURCE_FILES main.cpp)            # Add main.cpp file of project root directory as source file
 #add_executable(simple_example ${SOURCE_FILES})       # Add executable target with source files listed in SOURCE_FILES variable
 
-add_executable(case01 case01.c case20.cpp)
+add_executable(case01 case01.c case20.cpp case21.cpp)
 add_executable(case011 case01_1.cpp)
 add_executable(case02 case02.cpp)
 add_executable(case03 case03.cpp)
@@ -38,7 +38,7 @@ add_executable(case17 case17.cpp)
 add_executable(case18 case18.cpp)
 add_executable(case19 case19.cpp)
 add_executable(case20 case20.cpp)
-
+add_executable(case21 case21.cpp)
 
 
 
