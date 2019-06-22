@@ -2,7 +2,7 @@
 // Created by roohom on 19-6-22.
 //
 
-//çº¿ç´¢äºŒå‰æ ‘
+//ÏßË÷¶ş²æÊ÷
 #include <stdio.h>
 #include <malloc.h>
 #include <iostream>
@@ -16,7 +16,7 @@ using namespace std;
 typedef struct TBTNode
 {
     char data;
-    int ltag, rtag;         //çº¿ç´¢æ ‡è®°
+    int ltag, rtag;         //ÏßË÷±ê¼Ç
     struct TBTNode *lchild;
     struct TBTNode *rchild;
 }TBTNode;
@@ -30,12 +30,12 @@ void Visit(TBTNode *p)
 
 
 
-//å»ºç«‹äºŒå‰æ ‘
+//½¨Á¢¶ş²æÊ÷
 void createBinaryTree(TBTNode *&p)
 {
     char ch;
     cin>>ch;
-    if(ch == '#')     //å¦‚æœåˆ°äº†å¶å­èŠ‚ç‚¹ï¼Œæ¥ä¸‹æ¥çš„å·¦ã€å³å­æ ‘åˆ†åˆ«èµ‹å€¼ä¸º0
+    if(ch == '#')     //Èç¹ûµ½ÁËÒ¶×Ó½Úµã£¬½ÓÏÂÀ´µÄ×ó¡¢ÓÒ×ÓÊ÷·Ö±ğ¸³ÖµÎª0
     {
         p = nullptr;
     }
@@ -43,35 +43,35 @@ void createBinaryTree(TBTNode *&p)
     {
         p = (TBTNode *)malloc(sizeof(TBTNode));
         p->data = ch;
-        createBinaryTree(p->lchild);  //é€’å½’åˆ›å»ºå·¦å­æ ‘
-        createBinaryTree(p->rchild);  //é€’å½’åˆ›å»ºå³å­æ ‘
+        createBinaryTree(p->lchild);  //µİ¹é´´½¨×ó×ÓÊ÷
+        createBinaryTree(p->rchild);  //µİ¹é´´½¨ÓÒ×ÓÊ÷
     }
 }
 
 
-//é€šè¿‡ä¸­åºéå†å¯¹äºŒå‰æ ‘è¿›è¡Œçº¿ç´¢åŒ–
+//Í¨¹ıÖĞĞò±éÀú¶Ô¶ş²æÊ÷½øĞĞÏßË÷»¯
 void InThread(TBTNode *p,TBTNode *&pre)
 {
     if (p!= nullptr)
     {
-        InThread(p->lchild,pre);               //é€’å½’ï¼Œå·¦å­æ ‘çº¿ç´¢åŒ–
+        InThread(p->lchild,pre);               //µİ¹é£¬×ó×ÓÊ÷ÏßË÷»¯
         if(p->lchild!= nullptr)
         {
-            p->lchild = pre;                   //å»ºç«‹å½“å‰èŠ‚ç‚¹çš„å‰é©±çº¿ç´¢
+            p->lchild = pre;                   //½¨Á¢µ±Ç°½ÚµãµÄÇ°ÇıÏßË÷
             p->ltag=1;
         }
         if(pre!=nullptr && pre->rchild==nullptr)//
         {
-            pre->rchild = p;                   //å»ºç«‹å½“å‰èŠ‚ç‚¹çš„åç»§çº¿ç´¢
+            pre->rchild = p;                   //½¨Á¢µ±Ç°½ÚµãµÄºó¼ÌÏßË÷
             pre->rtag = 1;
         }
-        pre = p;                               //preæŒ‡å‘å½“å‰çš„pï¼Œä½œä¸ºpå°†è¦æŒ‡å‘çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹çš„å‰é©±èŠ‚ç‚¹æŒ‡ç¤ºæŒ‡é’ˆ
-        p= p->rchild;                          //pæŒ‡å‘ä¸€ä¸ªæ–°çš„èŠ‚ç‚¹ï¼Œå¼€å§‹é‡å¤æ“ä½œ
-        InThread(p->rchild,pre);                       //é€’å½’ï¼Œå³å­æ ‘çº¿ç´¢åŒ–
+        pre = p;                               //preÖ¸Ïòµ±Ç°µÄp£¬×÷Îªp½«ÒªÖ¸ÏòµÄÏÂÒ»¸ö½ÚµãµÄÇ°Çı½ÚµãÖ¸Ê¾Ö¸Õë
+        p= p->rchild;                          //pÖ¸ÏòÒ»¸öĞÂµÄ½Úµã£¬¿ªÊ¼ÖØ¸´²Ù×÷
+        InThread(p->rchild,pre);                       //µİ¹é£¬ÓÒ×ÓÊ÷ÏßË÷»¯
     }
 }
 
-//é€šè¿‡ä¸­åºéå†å»ºç«‹ä¸­åºçº¿ç´¢åŒ–äºŒå‰æ ‘
+//Í¨¹ıÖĞĞò±éÀú½¨Á¢ÖĞĞòÏßË÷»¯¶ş²æÊ÷
 
 void createInThread(TBTNode *root)
 {
@@ -85,7 +85,7 @@ void createInThread(TBTNode *root)
 }
 
 
-//å‰åºçº¿ç´¢äºŒå‰æ ‘
+//Ç°ĞòÏßË÷¶ş²æÊ÷
 void preThread(TBTNode *p,TBTNode *&pre)
 {
     if(p!= nullptr)
@@ -122,8 +122,8 @@ void createPreThread(TBTNode *root)
 }
 
 
-//éå†ä¸­åºçº¿ç´¢åŒ–äºŒå‰æ ‘
-//æ±‚ä»¥pä¸ºæ ¹çš„ä¸­åºçº¿ç´¢äºŒå‰æ ‘ä¸­ï¼Œä¸­åºåºåˆ—ä¸‹çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
+//±éÀúÖĞĞòÏßË÷»¯¶ş²æÊ÷
+//ÇóÒÔpÎª¸ùµÄÖĞĞòÏßË÷¶ş²æÊ÷ÖĞ£¬ÖĞĞòĞòÁĞÏÂµÄµÚÒ»¸ö½Úµã
 TBTNode *First(TBTNode *p)
 {
     while(p->ltag==0)
@@ -133,7 +133,7 @@ TBTNode *First(TBTNode *p)
     return p;
 }
 
-//æ±‚åœ¨ä¸­åºçº¿ç´¢äºŒå‰æ ‘ä¸­ï¼ŒèŠ‚ç‚¹påœ¨ä¸­åºä¸‹çš„åç»§èŠ‚ç‚¹
+//ÇóÔÚÖĞĞòÏßË÷¶ş²æÊ÷ÖĞ£¬½ÚµãpÔÚÖĞĞòÏÂµÄºó¼Ì½Úµã
 TBTNode *Next(TBTNode *p)
 {
     if(p->rtag==0)
@@ -142,7 +142,7 @@ TBTNode *Next(TBTNode *p)
         return p->rchild;
 }
 
-//åœ¨å‰åºçº¿ç´¢äºŒå‰æ ‘çš„åŸºç¡€ä¸Šæ‰§è¡Œå‰åºéå†
+//ÔÚÇ°ĞòÏßË÷¶ş²æÊ÷µÄ»ù´¡ÉÏÖ´ĞĞÇ°Ğò±éÀú
 
 void preOrder(TBTNode *root)
 {
@@ -163,7 +163,7 @@ void preOrder(TBTNode *root)
 }
 
 
-//åœ¨ä¸­åºçº¿ç´¢äºŒå‰æ ‘çš„åŸºç¡€ä¸Šï¼Œä¸­åºéå†
+//ÔÚÖĞĞòÏßË÷¶ş²æÊ÷µÄ»ù´¡ÉÏ£¬ÖĞĞò±éÀú
 
 void InOrder(TBTNode *root)
 {
@@ -177,16 +177,16 @@ int main()
 {
     TBTNode *root;
 
-    printf("åˆ›å»ºäºŒå‰æ ‘(æœªçº¿ç´¢åŒ–):\n");
+    printf("´´½¨¶ş²æÊ÷(Î´ÏßË÷»¯):\n");
     createBinaryTree(root);
-    printf("å¯¹åˆ›å»ºçš„äºŒå‰æ ‘è¿›è¡Œä¸­åºçº¿ç´¢åŒ–:\n");
+    printf("¶Ô´´½¨µÄ¶ş²æÊ÷½øĞĞÖĞĞòÏßË÷»¯:\n");
     createInThread(root);
-    printf("ä¸­åºéå†ï¼š\n");
+    printf("ÖĞĞò±éÀú£º\n");
     InOrder(root);
 
     printf("----------------\n");
 
-    printf("ä½¿ç”¨å‰åºçº¿ç´¢åŒ–äºŒå‰æ ‘ï¼š\n");
+    printf("Ê¹ÓÃÇ°ĞòÏßË÷»¯¶ş²æÊ÷£º\n");
     createPreThread(root);
     preOrder(root);
 
