@@ -2,7 +2,7 @@
 // Author:roohom<roohom@qq.com>
 // Created by roohom on 2019/5/26.
 // 2019/5/26 23:11
-//¶ş²æÊ÷µÄÁ´Ê½´æ´¢½á¹¹
+//äºŒå‰æ ‘çš„é“¾å¼å­˜å‚¨ç»“æ„
 
 
 #include <stdio.h>
@@ -24,18 +24,18 @@ void createBinaryTree(BTnode &p)
 {
     char ch;
     cin>>ch;
-    if(ch == '#')     //Èç¹ûµ½ÁËÒ¶×Ó½Úµã£¬½ÓÏÂÀ´µÄ×ó¡¢ÓÒ×ÓÊ÷·Ö±ğ¸³ÖµÎª0
+    if(ch == '#')     //å¦‚æœåˆ°äº†å¶å­èŠ‚ç‚¹ï¼Œæ¥ä¸‹æ¥çš„å·¦ã€å³å­æ ‘åˆ†åˆ«èµ‹å€¼ä¸º0
     {
         p = nullptr;
     }
     else
     {
-        //p = (BTnode)malloc(sizeof(BTnode));          ²»ÄÜ³É¹¦ÔËĞĞ
+        //p = (BTnode)malloc(sizeof(BTnode));          ä¸èƒ½æˆåŠŸè¿è¡Œ
         p = (BTNode *)malloc(sizeof(BTNode));
         //p = new BTNode;
         p->data = ch;
-        createBinaryTree(p->lchild);  //µİ¹é´´½¨×ó×ÓÊ÷
-        createBinaryTree(p->rchild);  //µİ¹é´´½¨ÓÒ×ÓÊ÷
+        createBinaryTree(p->lchild);  //é€’å½’åˆ›å»ºå·¦å­æ ‘
+        createBinaryTree(p->rchild);  //é€’å½’åˆ›å»ºå³å­æ ‘
     }
 }
 
@@ -45,7 +45,7 @@ int Visit(BTnode p)
     cout<<p->data<<" ";
 }
 
-//ÏÈĞò±éÀú
+//å…ˆåºéå†
 void preorder(BTnode p)
 {
     if(p!= nullptr)
@@ -58,7 +58,7 @@ void preorder(BTnode p)
     }
 }
 
-//ºóĞò±éÀú
+//ä¸­åºéå†
 void inorder(BTNode *p)
 {
     if(p!= nullptr)
@@ -69,7 +69,7 @@ void inorder(BTNode *p)
     }
 }
 
-//ºóĞò±éÀú
+//ååºéå†
 void postorder(BTNode *p)
 {
     if(p!= nullptr)
@@ -81,7 +81,7 @@ void postorder(BTNode *p)
 }
 
 
-//¼ÆËãÊ÷µÄÉî¶È
+//è®¡ç®—æ ‘çš„æ·±åº¦
 int getDepth(BTNode *p)
 {
     int LD,RD;
@@ -97,7 +97,7 @@ int getDepth(BTNode *p)
     }
 }
 
-//Í³¼ÆÊ÷µÄ½ÚµãÊıÄ¿
+//ç»Ÿè®¡æ ‘çš„èŠ‚ç‚¹æ•°ç›®
 int i=0;
 int getNode(BTnode p)
 {
@@ -110,7 +110,7 @@ int getNode(BTnode p)
     return i;
 }
 
-//ÏÈĞòÊä³öĞòÁĞÖĞµÚk¸ö½ÚµãµÄÖµ(k<=½ÚµãÊı)
+//å…ˆåºè¾“å‡ºåºåˆ—ä¸­ç¬¬kä¸ªèŠ‚ç‚¹çš„å€¼(k<=èŠ‚ç‚¹æ•°)
 int n = 0;
 void trave(BTnode p, int k)
 {
@@ -127,7 +127,7 @@ void trave(BTnode p, int k)
     }
 }
 
-//¸Ä³ÉÖĞĞò»òÕßºóĞø±éÀú
+//æ”¹æˆä¸­åºæˆ–è€…åç»­éå†
 void trave1(BTnode p, int k)
 {
     if(p!= nullptr)
@@ -159,7 +159,7 @@ void trave2(BTnode p, int k)
         }
 }
 
-//¶ş²æÊ÷µÄ²ã´Î±éÀú
+//äºŒå‰æ ‘çš„å±‚æ¬¡éå†
 
 void level(BTnode p)
 {
@@ -197,35 +197,35 @@ int main()
     printf("Let`s begin!\n");
     BTnode root;
     createBinaryTree(root);
-    printf("¶ş²æÊ÷½¨Á¢³É¹¦\n");
+    printf("äºŒå‰æ ‘å»ºç«‹æˆåŠŸ\n");
     cout<<endl;
 
-    printf("ÏÈĞò±éÀú·ÃÎÊ¶ş²æÊ÷µÄÃ¿¸ö½Úµã£º\n");
+    printf("å…ˆåºéå†è®¿é—®äºŒå‰æ ‘çš„æ¯ä¸ªèŠ‚ç‚¹ï¼š\n");
     preorder(root);
     cout<<endl;
 
-    printf("ÖĞĞò±éÀú·ÃÎÊ¶ş²æÊ÷µÄÃ¿¸ö½Úµã£º\n");
+    printf("ä¸­åºéå†è®¿é—®äºŒå‰æ ‘çš„æ¯ä¸ªèŠ‚ç‚¹ï¼š\n");
     inorder(root);
     cout<<endl;
 
-    printf("ºóĞò±éÀú·ÃÎÊ¶ş²æÊ÷µÄÃ¿¸ö½Úµã£º\n");
+    printf("ååºéå†è®¿é—®äºŒå‰æ ‘çš„æ¯ä¸ªèŠ‚ç‚¹ï¼š\n");
     postorder(root);
     cout<<endl;
 
-    printf("ÏÂÃæ¼ÆËãÊ÷µÄÉî¶È:\n");
-    printf("Ê÷µÄÉî¶ÈÊÇ£º%d\n",getDepth(root));
+    printf("ä¸‹é¢è®¡ç®—æ ‘çš„æ·±åº¦:\n");
+    printf("æ ‘çš„æ·±åº¦æ˜¯ï¼š%d\n",getDepth(root));
 
-    printf("Í³¼ÆÊ÷µÄ½ÚµãÊıÄ¿Îª:%d\n",getNode(root));
+    printf("ç»Ÿè®¡æ ‘çš„èŠ‚ç‚¹æ•°ç›®ä¸º:%d\n",getNode(root));
 
-    printf("ÇëÊäÈëÄãÏëÒªµÄµÚk¸ö½Úµã:");
+    printf("è¯·è¾“å…¥ä½ æƒ³è¦çš„ç¬¬kä¸ªèŠ‚ç‚¹:");
     int k;
     cin>>k;
-    printf("ÕâÊÇ²ÉÓÃÏÈĞò±éÀúµÃµ½µÄ½á¹û:" );
+    printf("è¿™æ˜¯é‡‡ç”¨å…ˆåºéå†å¾—åˆ°çš„ç»“æœ:" );
     trave(root,k);
 
-    printf("ÏÂÃæÊ¹ÓÃ²ã´Î±éÀú´òÓ¡¶ş²æÊ÷µÄ¸÷¸ö½Úµã:\n");
+    printf("ä¸‹é¢ä½¿ç”¨å±‚æ¬¡éå†æ‰“å°äºŒå‰æ ‘çš„å„ä¸ªèŠ‚ç‚¹:\n");
     level(root);
 
-    printf("·ÃÎÊÍê±Ï£¡");
+    printf("è®¿é—®å®Œæ¯•ï¼");
 
 }

@@ -2,12 +2,10 @@
 // Created by roohom on 19-6-22.
 //
 
-//ÏßË÷¶ş²æÊ÷
+//çº¿ç´¢äºŒå‰æ ‘
 #include <stdio.h>
 #include <malloc.h>
 #include <iostream>
-#include <search.h>
-
 using namespace std;
 
 #define maxsize 15
@@ -16,10 +14,10 @@ using namespace std;
 typedef struct TBTNode
 {
     char data;
-    int ltag, rtag;         //ÏßË÷±ê¼Ç
+    int ltag, rtag;         //çº¿ç´¢æ ‡è®°
     struct TBTNode *lchild;
     struct TBTNode *rchild;
-}TBTNode;
+}TBTNode, *TBTnode;
 
 
 
@@ -30,12 +28,12 @@ void Visit(TBTNode *p)
 
 
 
-//½¨Á¢¶ş²æÊ÷
-void createBinaryTree(TBTNode *&p)
+//å»ºç«‹äºŒå‰æ ‘
+void createBinaryTree(TBTnode &p)
 {
     char ch;
     cin>>ch;
-    if(ch == '#')     //Èç¹ûµ½ÁËÒ¶×Ó½Úµã£¬½ÓÏÂÀ´µÄ×ó¡¢ÓÒ×ÓÊ÷·Ö±ğ¸³ÖµÎª0
+    if(ch == '#')     //å¦‚æœåˆ°äº†å¶å­èŠ‚ç‚¹ï¼Œæ¥ä¸‹æ¥çš„å·¦ã€å³å­æ ‘åˆ†åˆ«èµ‹å€¼ä¸º0
     {
         p = nullptr;
     }
@@ -43,35 +41,37 @@ void createBinaryTree(TBTNode *&p)
     {
         p = (TBTNode *)malloc(sizeof(TBTNode));
         p->data = ch;
-        createBinaryTree(p->lchild);  //µİ¹é´´½¨×ó×ÓÊ÷
-        createBinaryTree(p->rchild);  //µİ¹é´´½¨ÓÒ×ÓÊ÷
+        createBinaryTree(p->lchild);  //é€’å½’åˆ›å»ºå·¦å­æ ‘
+        createBinaryTree(p->rchild);  //é€’å½’åˆ›å»ºå³å­æ ‘
+        p->ltag = 0;
+        p->rtag = 0;
     }
 }
 
 
-//Í¨¹ıÖĞĞò±éÀú¶Ô¶ş²æÊ÷½øĞĞÏßË÷»¯
+//é€šè¿‡ä¸­åºéå†å¯¹äºŒå‰æ ‘è¿›è¡Œçº¿ç´¢åŒ–
 void InThread(TBTNode *p,TBTNode *&pre)
 {
     if (p!= nullptr)
     {
-        InThread(p->lchild,pre);               //µİ¹é£¬×ó×ÓÊ÷ÏßË÷»¯
-        if(p->lchild!= nullptr)
+        InThread(p->lchild,pre);               //é€’å½’ï¼Œå·¦å­æ ‘çº¿ç´¢åŒ–
+        if(p->lchild != nullptr)
         {
-            p->lchild = pre;                   //½¨Á¢µ±Ç°½ÚµãµÄÇ°ÇıÏßË÷
+            p->lchild = pre;                   //å»ºç«‹å½“å‰èŠ‚ç‚¹çš„å‰é©±çº¿ç´¢
             p->ltag=1;
         }
-        if(pre!=nullptr && pre->rchild==nullptr)//
+        if(pre!=nullptr && pre->rchild!=nullptr)//
         {
-            pre->rchild = p;                   //½¨Á¢µ±Ç°½ÚµãµÄºó¼ÌÏßË÷
+            pre->rchild = p;                   //å»ºç«‹å½“å‰èŠ‚ç‚¹çš„åç»§çº¿ç´¢
             pre->rtag = 1;
         }
-        pre = p;                               //preÖ¸Ïòµ±Ç°µÄp£¬×÷Îªp½«ÒªÖ¸ÏòµÄÏÂÒ»¸ö½ÚµãµÄÇ°Çı½ÚµãÖ¸Ê¾Ö¸Õë
-        p= p->rchild;                          //pÖ¸ÏòÒ»¸öĞÂµÄ½Úµã£¬¿ªÊ¼ÖØ¸´²Ù×÷
-        InThread(p->rchild,pre);                       //µİ¹é£¬ÓÒ×ÓÊ÷ÏßË÷»¯
+        pre = p;                               //preæŒ‡å‘å½“å‰çš„pï¼Œä½œä¸ºpå°†è¦æŒ‡å‘çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹çš„å‰é©±èŠ‚ç‚¹æŒ‡ç¤ºæŒ‡é’ˆ
+        p= p->rchild;                          //pæŒ‡å‘ä¸€ä¸ªæ–°çš„èŠ‚ç‚¹ï¼Œå¼€å§‹é‡å¤æ“ä½œ
+        InThread(p, pre);                       //é€’å½’ï¼Œå³å­æ ‘çº¿ç´¢åŒ–
     }
 }
 
-//Í¨¹ıÖĞĞò±éÀú½¨Á¢ÖĞĞòÏßË÷»¯¶ş²æÊ÷
+//é€šè¿‡ä¸­åºéå†å»ºç«‹ä¸­åºçº¿ç´¢åŒ–äºŒå‰æ ‘
 
 void createInThread(TBTNode *root)
 {
@@ -85,7 +85,7 @@ void createInThread(TBTNode *root)
 }
 
 
-//Ç°ĞòÏßË÷¶ş²æÊ÷
+//å‰åºçº¿ç´¢äºŒå‰æ ‘
 void preThread(TBTNode *p,TBTNode *&pre)
 {
     if(p!= nullptr)
@@ -122,8 +122,8 @@ void createPreThread(TBTNode *root)
 }
 
 
-//±éÀúÖĞĞòÏßË÷»¯¶ş²æÊ÷
-//ÇóÒÔpÎª¸ùµÄÖĞĞòÏßË÷¶ş²æÊ÷ÖĞ£¬ÖĞĞòĞòÁĞÏÂµÄµÚÒ»¸ö½Úµã
+//éå†ä¸­åºçº¿ç´¢åŒ–äºŒå‰æ ‘
+//æ±‚ä»¥pä¸ºæ ¹çš„ä¸­åºçº¿ç´¢äºŒå‰æ ‘ä¸­ï¼Œä¸­åºåºåˆ—ä¸‹çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
 TBTNode *First(TBTNode *p)
 {
     while(p->ltag==0)
@@ -133,7 +133,7 @@ TBTNode *First(TBTNode *p)
     return p;
 }
 
-//ÇóÔÚÖĞĞòÏßË÷¶ş²æÊ÷ÖĞ£¬½ÚµãpÔÚÖĞĞòÏÂµÄºó¼Ì½Úµã
+//æ±‚åœ¨ä¸­åºçº¿ç´¢äºŒå‰æ ‘ä¸­ï¼ŒèŠ‚ç‚¹påœ¨ä¸­åºä¸‹çš„åç»§èŠ‚ç‚¹
 TBTNode *Next(TBTNode *p)
 {
     if(p->rtag==0)
@@ -142,13 +142,13 @@ TBTNode *Next(TBTNode *p)
         return p->rchild;
 }
 
-//ÔÚÇ°ĞòÏßË÷¶ş²æÊ÷µÄ»ù´¡ÉÏÖ´ĞĞÇ°Ğò±éÀú
+//åœ¨å‰åºçº¿ç´¢äºŒå‰æ ‘çš„åŸºç¡€ä¸Šæ‰§è¡Œå‰åºéå†
 
 void preOrder(TBTNode *root)
 {
     if(root!= nullptr)
     {
-        TBTNode *p=root;
+        TBTnode p=root;
         while(p!=nullptr)
         {
             while(p->ltag==0)
@@ -163,11 +163,23 @@ void preOrder(TBTNode *root)
 }
 
 
-//ÔÚÖĞĞòÏßË÷¶ş²æÊ÷µÄ»ù´¡ÉÏ£¬ÖĞĞò±éÀú
-
-void InOrder(TBTNode *root)
+//ä¸­åºéå†
+void inorder(TBTnode p)
 {
-    for(TBTNode *p=First(root);p!= nullptr;p=Next(p))
+    if(p != nullptr)
+    {
+        inorder(p->lchild);
+        Visit(p);
+        inorder(p->rchild);
+    }
+}
+
+
+//åœ¨ä¸­åºçº¿ç´¢äºŒå‰æ ‘çš„åŸºç¡€ä¸Šï¼Œä¸­åºéå†
+
+void InOrder(TBTnode root)
+{
+    for(TBTnode p=First(root);p!= nullptr;p=Next(p))
         Visit(p);
 }
 
@@ -175,18 +187,21 @@ void InOrder(TBTNode *root)
 
 int main()
 {
-    TBTNode *root;
+    TBTnode root= nullptr;
 
-    printf("´´½¨¶ş²æÊ÷(Î´ÏßË÷»¯):\n");
+    printf("åˆ›å»ºäºŒå‰æ ‘(æœªçº¿ç´¢åŒ–):\n");
     createBinaryTree(root);
-    printf("¶Ô´´½¨µÄ¶ş²æÊ÷½øĞĞÖĞĞòÏßË÷»¯:\n");
+    printf("----------------\n");
+    printf("å¯¹åˆ›å»ºçš„äºŒå‰æ ‘è¿›è¡Œä¸­åºçº¿ç´¢åŒ–:\n");
     createInThread(root);
-    printf("ÖĞĞò±éÀú£º\n");
+    printf("ä¸­åºéå†ï¼š\n");
+    inorder(root);
+    printf("----------------\n");
+    printf("åœ¨çº¿ç´¢äºŒå‰æ ‘çš„åŸºç¡€ä¸Šä¸­åºéå†ï¼š\n");
     InOrder(root);
-
     printf("----------------\n");
 
-    printf("Ê¹ÓÃÇ°ĞòÏßË÷»¯¶ş²æÊ÷£º\n");
+    printf("ä½¿ç”¨å‰åºçº¿ç´¢åŒ–äºŒå‰æ ‘ï¼š\n");
     createPreThread(root);
     preOrder(root);
 
