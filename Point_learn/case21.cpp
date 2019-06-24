@@ -23,7 +23,8 @@ typedef struct TBTNode
 
 void Visit(TBTNode *p)
 {
-    cout<<p->data<<endl;
+    char a = p->data;
+    cout<<a<<endl;
 }
 
 
@@ -187,7 +188,7 @@ void InOrder(TBTnode root)
 
 int main()
 {
-    TBTnode root= nullptr;
+    TBTnode root;
 
     printf("创建二叉树(未线索化):\n");
     createBinaryTree(root);
