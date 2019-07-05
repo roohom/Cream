@@ -7,11 +7,13 @@
 //第一次出错打印链表的时候只是打印出来一串内存地址，疑惑
 #include <stdio.h>
 #include <malloc.h>
+
 //单链表节点定义
 typedef struct LNode{
     int data;
     struct LNode *next;
 }SLNode, *List;
+
 
 /*用这种输出方式为什么不行？只打印出一串内存地址？？？
 //输出链表的元素

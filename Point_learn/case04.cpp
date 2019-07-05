@@ -12,23 +12,28 @@ typedef struct
     ElemType elem[MaxSize];          //´æ·ÅË³Ğò±íÖĞµÄÔªËØ
     int length;                      //´æ·ÅË³Ğò±íµÄ³¤¶È
 } SqList;
+
 void InitList(SqList *&L)          //³õÊ¼»¯ÏßĞÔ±í£¬¹¹ÔìÒ»¸ö¿ÕµÄÏßĞÔ±í£¬²¢½«³¤¶ÈÉèÖÃÎª0
 {
     L=(SqList *)malloc(sizeof(SqList));
     L->length=0;
 }
+
 void DestroyList(SqList *L)        //Ïú»ÙÏßĞÔ±í£¬¼´ÊÍ·ÅÏßĞÔ±íËùÕ¼ÓÃµÄÄÚ´æ¿Õ¼ä
 {
     free(L);
 }
+
 int ListEmpty(SqList *L)           //ÅĞ¶ÏÏßĞÔ±íÊÇ·ñÎª¿Õ ¼´¿´Æä³¤¶ÈÊÇ·ñÎª0
 {
     return(L->length==0);
 }
+
 int ListLength(SqList *L)          //ÇóÏßĞÔ±íµÄ³¤¶È
 {
     return(L->length);
 }
+
 void DispList(SqList *L)            //Êä³öÏßĞÔ±í
 {
     int i;
@@ -37,6 +42,7 @@ void DispList(SqList *L)            //Êä³öÏßĞÔ±í
         printf("%c",L->elem[i]);
     printf("\n");
 }
+
 int GetElem(SqList *L,int i,ElemType &e)//ÇóÏßĞÔ±íÖĞÄ³¸öÊı¾İÔªËØµÄÖµ
 {
     if (i<1 || i>L->length)
@@ -44,6 +50,7 @@ int GetElem(SqList *L,int i,ElemType &e)//ÇóÏßĞÔ±íÖĞÄ³¸öÊı¾İÔªËØµÄÖµ
     e=L->elem[i-1];
     return 1;
 }
+
 int LocateElem(SqList *L, ElemType e)//°´ÔªËØ²éÕÒ£¬ÕÒµ½Óë¸ÃÔªËØÖµÏàÍ¬µÄÔªËØ²¢·µ»ØÆäĞòºÅ
 {
     int i=0;
@@ -53,6 +60,7 @@ int LocateElem(SqList *L, ElemType e)//°´ÔªËØ²éÕÒ£¬ÕÒµ½Óë¸ÃÔªËØÖµÏàÍ¬µÄÔªËØ²¢·µ»
     else
         return i+1;
 }
+
 int ListInsert(SqList *&L,int i,ElemType e)//²åÈëÊı¾İÔªËØ£¬ÔÚµÚi¸öÎ»ÖÃÉÏ²åÈëĞÂÔªËØ£¬Ê¹ºóÃæµÄÔªËØÒÀ´ÎºóÒÆ£¬²¢ÊÇ³¤¶È¼Ó1£»
 {
     int j;
@@ -65,6 +73,7 @@ int ListInsert(SqList *&L,int i,ElemType e)//²åÈëÊı¾İÔªËØ£¬ÔÚµÚi¸öÎ»ÖÃÉÏ²åÈëĞÂÔª
     L->length++;                        /*Ë³Ğò±í³¤¶ÈÔö1*/
     return 1;
 }
+
 int ListDelete(SqList *&L,int i,ElemType &e) //É¾³ıÄ³¸öÔªËØ£¬Ê¹ºóÃæµÄÔªËØÒÀ´ÎÇ°ÒÆ£¬²¢½«ÏßĞÔ±íµÄ³¤¶È¼õ1£»
 {
     int j;
